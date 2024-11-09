@@ -13,21 +13,6 @@ const itemList = [
     type: "BAR",
   },
   {
-    id: "0004",
-    name: "Bronze Enchantment Ore",
-    rarity: "COMMON",
-    type: "ENCHANTMENT_ORE",
-    contents: [
-      {
-        COMMON: 0.5,
-      },
-      { UNCOMMON: 0.3 },
-      { RARE: 0.15 },
-      { EPIC: 0.04 },
-      { LEGENDARY: 0.01 },
-    ],
-  },
-  {
     id: "0005",
     name: "Cooldown Potion",
     rarity: "EPIC",
@@ -38,7 +23,7 @@ const itemList = [
         { id: interaction.user.id },
         {
           $pull: {
-            Cooldowns: [],
+            Cooldowns: {dailyLastUsed: {$exists: true}},
           },
         }
       );
